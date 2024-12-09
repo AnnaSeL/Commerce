@@ -1,0 +1,16 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    {{ category }}
+{% endblock %}
+
+{% block body %}
+    <h2>{{ category }}</h2>
+    <div>
+        {% if listings %}
+            {% include 'auctions/list_listings.html'%}
+        {% else %}
+            No items.
+        {% endif %}
+    </div>    
+{% endblock %}

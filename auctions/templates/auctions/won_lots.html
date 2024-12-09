@@ -1,0 +1,14 @@
+{% extends 'auctions/layout.html'%}
+
+{% block title %}
+    Won lots
+{% endblock %}
+
+{% block body %}
+    <h2>Won lots</h2>
+    {% if listings %}
+        {% include 'auctions/list_listings.html'%}
+    {% else %}
+        No lots won yet.
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% for listing in listings %}
+    <div style="display: flex; align-items: flex-start; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; margin-bottom: 10px;">
+        {% if listing.image %}
+            <img src="{{ listing.image }}" width="200" height="200" alt="{{ listing.title }}">
+        {% else %}
+            <div style="width: 200px; height: 200px; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                No Image
+            </div>
+        {% endif %}
+        <div style="margin-left: 20px; display: flex; flex-direction: column; justify-content: center;">
+            <a href="{% url 'listing' listing.id %}" style="font-size: 1.5rem; font-weight: bold; color: #007bff; text-decoration: none;">{{ listing.title }}</a>
+            {% if listing.category %}
+                <p style="margin: 5px 0; font-weight: bold;">Category: {{ listing.category }}</p>
+            {% endif %}
+            <p style="margin: 5px 0; font-weight: bold;">Price: ${{ listing.price|floatformat:2 }}</p>
+            <p style="margin: 5px 0; color: #555;">{{ listing.description }}</p>
+            <p style="margin: 5px 0; color: #777; font-size: 0.9rem;">Created {{ listing.created_at }}</p>
+        </div>
+    </div>
+{% endfor %}
